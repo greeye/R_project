@@ -189,7 +189,7 @@ View(t(mean_hh_income_last_open)) #take a look at the result
 ############################################################  Part5: Recoding  ####################################################### 
 ######################################################################################################################################### 
 
-#2 ´¦Àí
+#2 Â´Â¦Ã€Ã­
 train$m3_pos_revenue_base_sp_6mo <- ifelse(is.na(train$pos_revenue_base_sp_6mo) == T, 294.16,     #when pos_revenue_base_sp_6mo is missing ,then assign 294.16
                                            ifelse(train$pos_revenue_base_sp_6mo <= 0, 0,                   #when pos_revenue_base_sp_6mo<=0 then assign 0
                                                   ifelse(train$pos_revenue_base_sp_6mo >=4397.31, 4397.31, #when pos_revenue_base_sp_6mo>=4397.31 then assign 4397.31
@@ -439,10 +439,13 @@ decile_sum2<-within(decile_sum,
                     index<-100*rev_avg/(sum(rev)/sum(cnt))
                     })  #add resp_rate,index
 View(decile_sum2)
-# decreased sort    decile_sum2(order(decile_sum2[,i]£¬decreasing = T),)
+# decreased sort    decile_sum2(order(decile_sum2[,i]Â£Â¬decreasing = T),)
 # [row,column]
 decile_sum3 <- decile_sum2[order(decile_sum2[,1],decreasing = T),]
 View(decile_sum3)
 ss <- summary(model_lm)
+#R2
+summary2<-summary(model_sel) #get model summary
+(R2<-data.frame(r2=summary2$r.squared,adj_r2=summary2$adj.r.squared)) #get R2
 
 
